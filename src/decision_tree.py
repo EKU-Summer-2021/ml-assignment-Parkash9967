@@ -69,8 +69,6 @@ class DecisionTree:
         path_results = path_dir + r'\Results'
         path_dr = path_dir + r'\Results\DR'
         if not os.path.exists(path_results):
-            print("path results", path_results)
-            print("path dir", path_dr)
             os.mkdir(os.path.join(path_dir, directory))
         if not os.path.exists(path_dr):
             os.mkdir(os.path.join(path_results, directory_dt))

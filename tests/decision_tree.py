@@ -35,7 +35,6 @@ class ReadCSV(unittest.TestCase):
         """
 
         data = DecisionTree()
-        get_results = data.save_results()
-        print(get_results)
+        get_results = data.decision_tree()
         expected = 0.7
         np.testing.assert_allclose(get_results.max(0), expected, atol=0.2)
