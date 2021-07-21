@@ -66,8 +66,8 @@ class DecisionTree:
         directory = 'Results'
         directory_dt = 'DR'
         # path_dir = r'C:\Users\Parkash Ladhani\PycharmProjects\ml-assignment-Parkash9967\Results'
-        path_results = path_dir + r'\Results'
-        path_dr = path_dir + r'\Results\DR'
+        path_results = path_dir + r'/Results'
+        path_dr = path_dir + r'/Results/DR'
         if not os.path.isdir(path_results):
             if not os.path.exists(path_results):
                 os.makedirs(os.path.join(path_dir, directory), exist_ok=True)
