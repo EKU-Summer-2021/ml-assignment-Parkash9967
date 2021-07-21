@@ -1,7 +1,7 @@
 """
 UnitTest  of read_csv module
 """
-
+import os
 import unittest
 import numpy as np
 import pandas as pd
@@ -38,3 +38,8 @@ class ReadCSV(unittest.TestCase):
         get_results = data.decision_tree()
         expected = 0.7
         np.testing.assert_allclose(get_results.max(0), expected, atol=0.2)
+
+    def test_result_type(self):
+        data = DecisionTree()
+        get_data = data.save_results()
+        self.assertIsInstance(get_data, pd.DataFrame)
