@@ -68,10 +68,11 @@ class DecisionTree:
         # path_dir = r'C:\Users\Parkash Ladhani\PycharmProjects\ml-assignment-Parkash9967\Results'
         path_results = path_dir + r'\Results'
         path_dr = path_dir + r'\Results\DR'
-        if not os.path.exists(path_results):
-            os.mkdir(os.path.join(path_dir, directory))
-        if not os.path.exists(path_dr):
-            os.mkdir(os.path.join(path_results, directory_dt))
+        if not os.path.isdir(path_results):
+            if not os.path.exists(path_results):
+                os.mkdir(os.path.join(path_dir, directory))
+            if not os.path.exists(path_dr):
+                os.mkdir(os.path.join(path_results, directory_dt))
         file_name = 'csv_resutls' + datetime.now().strftime('%Y-%m-%d_%H-%M-%S') + '.csv'
         file_location = os.path.join(path_dr, file_name)
         final_result_csv.to_csv(file_location, index=False)
