@@ -29,7 +29,8 @@ class DecisionTree:
         data.drop('Unnamed: 0', inplace=True, axis=1)  # pylint: disable=E1101
         data.drop('year', inplace=True, axis=1)  # pylint: disable=E1101
         data_x = data[[  # pylint: disable= E1136
-            'Small Bags', 'Large Bags', 'Total Volume', 'Total Bags', '4046', '4225', '4770', 'Large Bags',  # pylint: disable= E1136
+            'Small Bags', 'Large Bags', 'Total Volume', 'Total Bags', '4046', '4225', '4770', 'Large Bags',
+            # pylint: disable= E1136
             'XLarge Bags']]  # pylint: disable= E1136
         data_y = data['AveragePrice']  # pylint: disable= E1136
         x_train, x_test, y_train, y_test = train_test_split(data_x, data_y, test_size=0.2)
@@ -68,6 +69,8 @@ class DecisionTree:
         path_results = path_dir + r'\Results'
         path_dr = path_dir + r'\Results\DR'
         if not os.path.exists(path_results):
+            print("path results", path_results)
+            print("path dir", path_dr)
             os.mkdir(os.path.join(path_dir, directory))
         if not os.path.exists(path_dr):
             os.mkdir(os.path.join(path_results, directory_dt))
