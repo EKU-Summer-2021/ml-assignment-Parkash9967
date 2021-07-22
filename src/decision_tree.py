@@ -54,13 +54,13 @@ class DecisionTree:
         save = pd.DataFrame({'score': cv_rests["mean_test_score"],
                              'parameters': cv_rests["params"]})
         plt.scatter(y_test, y_pred)
-        plt.savefig("plot.png")
         dtr = DecisionTreeRegressor(random_state=10)
         dtr.fit(x_train, y_train)
         plt.figure(figsize=(15, 10))
         _ = tree.plot_tree(self.model,
                            feature_names=y_pred,
                            class_names=data['AveragePrice'],
+                           max_depth=3,
                            filled=True)
         path_dir = os.getcwd()
         plot_directory = 'Ploting'
@@ -68,9 +68,12 @@ class DecisionTree:
         if not os.path.isdir(path_results):
             if not os.path.exists(path_results):
                 os.makedirs(os.path.join(path_dir, plot_directory), exist_ok=True)
-        file_name = 'plot'
+        file_name = 'plot_dt'
         file_location = os.path.join(path_results, file_name)
-        plt.savefig(file_location + "plot.png")
+        plt.savefig(file_location + ".png")
+        fil_location = os.path.join(path_results, 'plot_pred_line')
+        plt.savefig(fil_location + ".png")
+
         plt.show()
         return save
 
