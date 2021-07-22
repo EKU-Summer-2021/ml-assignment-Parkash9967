@@ -2,11 +2,10 @@
 Main class
 """
 
-import pandas as pd
 import numpy as np
-from sklearn.model_selection import GridSearchCV
+import pandas as pd
+
 from src import Polynomial
-from src import decision_tree
 from src.decision_tree import DecisionTree
 
 if __name__ == '__main__':
@@ -17,5 +16,4 @@ if __name__ == '__main__':
 
 d = DecisionTree()
 d.decision_tree()
-d.save_results()
-
+# d.save_results()

@@ -5,6 +5,7 @@ import os
 from datetime import datetime
 import pandas as pd
 import matplotlib.pyplot as plt
+from sklearn import tree
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.model_selection import GridSearchCV
@@ -54,6 +55,22 @@ class DecisionTree:
                              'parameters': cv_rests["params"]})
         plt.scatter(y_test, y_pred)
         plt.savefig("plot.png")
+        dtr = DecisionTreeRegressor(random_state=10)
+        dtr.fit(x_train, y_train)
+        plt.figure(figsize=(15, 10))
+        a = tree.plot_tree(self.model,
+                           feature_names=y_pred,
+                           class_names=data['AveragePrice'],
+                           filled=True)
+        path_dir = os.getcwd()
+        plot_directory = 'Ploting'
+        path_results = path_dir + r'/Ploting'
+        if not os.path.isdir(path_results):
+            if not os.path.exists(path_results):
+                os.makedirs(os.path.join(path_dir, plot_directory), exist_ok=True)
+        file_name = 'plot'
+        file_location = os.path.join(path_results, file_name)
+        plt.savefig(file_location + "plot.png")
         plt.show()
         return save
 
