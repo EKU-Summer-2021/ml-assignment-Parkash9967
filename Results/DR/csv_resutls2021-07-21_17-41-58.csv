@@ -1,0 +1,13 @@
+score,parameters
+0.549050394377791,"{'min_samples_leaf': 2, 'min_samples_split': 7}"
+0.582717587625573,"{'min_samples_leaf': 2, 'min_samples_split': 15}"
+0.5989863238205964,"{'min_samples_leaf': 2, 'min_samples_split': 30}"
+0.5849114407047883,"{'min_samples_leaf': 4, 'min_samples_split': 7}"
+0.597928631595638,"{'min_samples_leaf': 4, 'min_samples_split': 15}"
+0.6110204141757404,"{'min_samples_leaf': 4, 'min_samples_split': 30}"
+0.5995590827037194,"{'min_samples_leaf': 6, 'min_samples_split': 7}"
+0.6054504853307224,"{'min_samples_leaf': 6, 'min_samples_split': 15}"
+0.614194079412527,"{'min_samples_leaf': 6, 'min_samples_split': 30}"
+0.6138860089251861,"{'min_samples_leaf': 8, 'min_samples_split': 7}"
+0.6142575097051336,"{'min_samples_leaf': 8, 'min_samples_split': 15}"
+0.6176905426879472,"{'min_samples_leaf': 8, 'min_samples_split': 30}"
