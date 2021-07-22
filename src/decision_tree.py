@@ -53,8 +53,8 @@ class DecisionTree:
         self.model.predict(x_test)
         save = pd.DataFrame({'score': cv_rests["mean_test_score"],
                              'parameters': cv_rests["params"]})
-        # plt.scatter(y_test, y_pred)
-        # plt.savefig("plot.png")
+        plt.scatter(y_test, y_pred)
+        plt.savefig("plot.png")
         dtr = DecisionTreeRegressor(random_state=10)
         dtr.fit(x_train, y_train)
         plt.figure(figsize=(15, 10))
