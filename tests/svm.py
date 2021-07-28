@@ -14,10 +14,11 @@ class MyTestCase(unittest.TestCase):
 
     def setUp(self):
         dataset = pd.read_csv('https://raw.githubusercontent.com/Parkash9967/Test/master/heart.csv')
+        param_grid = {'C': [5, 10], 'kernel': ('linear', 'rbf')}
         self.data = SupportVectorMachines(
             dataset[['age', 'sex', 'cp', 'trestbps', 'chol', 'fbs', 'restecg', 'thalach', 'exang',
                      'oldpeak', 'slope', 'ca', 'thal']],
-            dataset['target'])
+            dataset['target'], param_grid)
 
     def test_s_v_m(self):
         """

@@ -19,33 +19,24 @@ class SupportVectorMachines:  # pylint: disable= R0902
     def __str__(self):
         return self.__class__.__name__
 
-    def __init__(self, x_data, y_data):
+    def __init__(self, x_data, y_data, param_grid):
         """
             constructor with parameters   of  Support Vector Machines class
         """
-        self.x_data = x_data
-        self.y_data = y_data
         self.clf = None
         self.x_train, self.x_test, self.y_train, self.y_test = train_test_split(x_data, y_data, test_size=0.2)
-        self.svc_model = svm.SVC(kernel='linear')
+        self.param_grid = param_grid
+        self.svc_model = svm.SVC()
 
     def s_v_m(self):
         """
              function svm for  predicting score and gird search
         """
 
-        self.svc_model.fit(self.x_train, self.y_train)
-        # data = pd.DataFrame({'Actual': self.y_test, 'Predicted': y_pred})
-        score = self.svc_model.score(self.x_train, self.y_train)
-        print(score)
-        parameters = {'kernel': ('linear', 'rbf'), 'C': [5, 10]}
-        self.clf = GridSearchCV(self.svc_model, parameters)
-        GridSearchCV(estimator=self.svc_model,
-                     param_grid={'C': [5, 10], 'kernel': ('linear', 'rbf')})
+        self.clf = GridSearchCV(estimator=self.svc_model,
+                                param_grid=self.param_grid)
         self.clf.fit(self.x_train, self.y_train)
         cv_rests = self.clf.cv_results_
-        self.svc_model.fit(self.x_train, self.y_train)
-        self.svc_model.predict(self.x_test)
         result = pd.DataFrame({'score': cv_rests["mean_test_score"],
                                'parameters': cv_rests["params"]})
         return result
@@ -62,16 +53,15 @@ class SupportVectorMachines:  # pylint: disable= R0902
         if not os.path.isdir(path_result):
             if not os.path.exists(path_result):
                 os.makedirs(os.path.join(parent_dir, directory), exist_ok=True)
-                result_path = os.path.join(directory, directory_result)
-                csv_result = pd.DataFrame(csv_result)
-                csv_result.to_csv(result_path, index=False)
+        result_path = os.path.join(directory, directory_result)
+        csv_result = pd.DataFrame(csv_result)
+        csv_result.to_csv(result_path, index=False)
         return csv_result
 
     def plotting_svm(self):
         """
             method for plotting  the confusion matrix
         """
-        self.svc_model.predict(self.x_test)
         plot_confusion_matrix(self.clf.best_estimator_, self.x_test, self.y_test)
         path_dir = os.getcwd()
         directory = path_dir + '/Plotting_SVM'
